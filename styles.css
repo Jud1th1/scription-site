@@ -1,8 +1,58 @@
 /************ Basic Resets ************/
+h1, h2, h3, h4, p, ul, li {
+    margin: 0;
+    padding: 0;
+}
 
+nav ul, nav ol {
+    list-style-type: none;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+img{
+    display: block;
+    max-width: 100%;
+}
+
+a{
+    text-decoration: none;
+}
+
+:root{
+    --rich-black: #061923;
+    --firey-rose: #FF5964;
+    --alice-blue: #EBF8FF;
+    --jasmine: #FFE099;
+    --tea-green: #C8D6AF;
+    --tea-green-light: #F7FFEA;
+    --english-violet: #48284A;
+}
 
 /************ Basic typography *************/
+body{
+    font-family: 'IBM Plex Sans Condensed', sans-serif;
+    color: var(--rich-black);
+    padding-top: 100px;
+}
 
+h1, h2, h3, h4{
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
+}
+
+h2{
+    font-size: 24px;
+    margin-bottom: .5em;
+    color: var(--firey-rose);
+}
+
+h3{
+    font-size: 20px;
+    margin-bottom: .5em;
+}
 
 /************ Basic Page Sections *************/
 
