@@ -570,84 +570,233 @@ footer article a {
 /************ Large Tablet Size Styles *************/
 @media only screen and (min-width: 1020px) {
     /* body, header and slider styles */
-    body { padding: 0;}
-    header { display: flex; justify-content: space-between; align-items: center; }
-    header .logo { flex: 1; margin-left: 20px; }
-    header nav { flex: 2; }
-    header nav ul { justify-content: flex-end; margin-right: 20px; }
-    header nav ul li a { padding: 20px 10px; }
-    #slider .cta { width: 33%; padding: 30px; }
+    body { 
+        padding: 0;
+    }
+
+    header { 
+        display: flex; 
+        justify-content: space-between; 
+        align-items: center; 
+    }
+
+    header .logo { 
+        flex: 1; 
+        margin-left: 20px; 
+    }
+
+    header nav { 
+        flex: 2; 
+    }
+
+    header nav ul { 
+        justify-content: flex-end; 
+        margin-right: 20px; 
+    }
+
+    header nav ul li a { 
+        padding: 20px 10px; 
+    }
+
+    #slider .cta { 
+        width: 33%; 
+        padding: 30px; 
+    }
 	
     /* download styles */
-    #download { flex-wrap: nowrap; }
-    #download article:first-of-type{ display: block; flex: 2;}
-    #download article:nth-child(2){ flex: 3; }
-    #download article:last-of-type { flex: 5 0; }
+    #download { 
+        flex-wrap: nowrap; 
+    }
+
+    #download article:first-of-type{ 
+        display: block; 
+        flex: 2;
+    }
+
+    #download article:nth-child(2){ 
+        flex: 3; 
+    }
+
+    #download article:last-of-type {
+         flex: 5 0; 
+    }
 
     /* pricing styles */
-    #pricing article:first-of-type { flex: 1; }
-    #pricing article:last-of-type { flex: 4; }
-    #pricing .container { display: flex; justify-content: space-between; }
-    #pricing .container article { flex: 1; padding: 0 10px 40px 10px; margin: 0; position: relative;}
-    #pricing .container article button{ position: absolute; bottom: 0;}
+    #pricing article:first-of-type {
+         flex: 1; 
+    }
+
+    #pricing article:last-of-type {
+         flex: 4; 
+    }
+
+    #pricing .container {
+         display: flex; 
+         justify-content: space-between; 
+        }
+
+    #pricing .container article { 
+        flex: 1; 
+        padding: 0 10px 40px 10px; 
+        margin: 0; 
+        position: relative;
+    }
+
+    #pricing .container article button{ 
+        position: absolute; 
+        bottom: 0;
+    }
 
     /* Listen styles */
-    #listen article:first-of-type { flex: 1; }
-    #listen article:last-of-type { flex: 4; }
-    #listen blockquote { font-size: 36px; }
+    #listen article:first-of-type { 
+        flex: 1; 
+    }
+
+    #listen article:last-of-type { 
+        flex: 4; 
+    }
+
+    #listen blockquote {
+        font-size: 36px; 
+    }
 
     /* Our Team styles */
-    #ourteam { display: flex; }
-    #ourteam > article { flex: 1; }
-    #ourteam > figure { flex: 1; }
-    #ourteam div figure { width: 100%; }
-    #ourteam article div:first-of-type { flex: 1;}
-    #ourteam article div:last-of-type { flex: 2; }
+    #ourteam { 
+        display: flex; 
+    }
+
+    #ourteam > article { 
+        flex: 1; 
+    }
+
+    #ourteam > figure { 
+        flex: 1; 
+    }
+
+    #ourteam div figure { 
+        width: 100%; 
+    }
+
+    #ourteam article div:first-of-type { 
+        flex: 1;
+    }
+
+    #ourteam article div:last-of-type { 
+        flex: 2; 
+    }
 }
 
 /************ Desktop Size Styles *************/
 
 @media only screen and (min-width: 1200px) {
 	/* Page styles */
-section { padding: 50px; }
-#page > footer { padding: 50px; margin-bottom: 0;}
+    section { 
+        padding: 50px; 
+    }
 
-/* Header styles */
-header .logo { margin-left: 50px; }
-header nav ul { margin-right: 50px; }
-header .logo h1 { font-size: 36px; top: 12px;left: 60px; }
-header .logo img { width: 70px; }
+    #page > footer { 
+        padding: 50px; 
+        margin-bottom: 0;
+    }
 
-/* Slider styles */
-#slider .cta { width: 25%; padding: 50px;}
-.slide1 { background-image: url("images/slider/slider01-large.jpg"); }
+    /* Header styles */
+    header .logo { 
+        margin-left: 50px; 
+    }
 
-/* Overview styles */
-#overview > article { flex: 1; margin-right: 50px;}
-#overview > section { flex: 2; padding-top: 3em; }
-#overview > section { grid-template-columns: 1fr 1fr 1fr; grid-gap: 50px; }
+    header nav ul { 
+        margin-right: 50px; 
+    }
 
-/* Download styles */
-#download article { padding: 50px; }
-#download article:nth-child(2){ flex: 2; }
+    header .logo h1 { 
+        font-size: 36px; 
+        top: 12px;
+        left: 60px; 
+    }
 
-/* Pricing styles */
-#pricing > article:first-of-type { margin-right: 50px; }
-#pricing .container article { flex: 1; padding: 0 20px 40px 20px;}
+    header .logo img { 
+        width: 70px; 
+    }
+
+    /* Slider styles */
+    #slider .cta { 
+        width: 25%;
+        padding: 50px;
+    }
+
+    .slide1 { background-image: url("images/slider/slider01-large.jpg"); }
+
+    /* Overview styles */
+    #overview > article { 
+        flex: 1; margin-right: 50px;
+    }
+
+    #overview > section { 
+        flex: 2; padding-top: 3em; 
+    }
+
+    #overview > section { 
+        grid-template-columns: 1fr 1fr 1fr; 
+        grid-gap: 50px; 
+    }
+
+    /* Download styles */
+    #download article { 
+        padding: 50px; 
+    }
+
+    #download article:nth-child(2){ 
+        flex: 2; 
+    }
+
+    /* Pricing styles */
+    #pricing > article:first-of-type {
+        margin-right: 50px; 
+    }
+
+    #pricing .container article {
+        flex: 1; 
+        padding: 0 20px 40px 20px;
+    }
 }
 
-/* Listen styles */
-#listen article:first-of-type { flex: 1; padding: 50px; }
-#listen article:last-of-type { flex: 4; }
-#listen blockquote { font-size: 48px; padding: 30px; }
+    /* Listen styles */
+    #listen article:first-of-type { 
+        flex: 1; padding: 50px; 
+    }
 
-/* Footer styles */
-#page > footer nav { flex: 2 }
-#page > footer nav ul { justify-content: flex-start; }
-#page > footer nav ul li { margin-right: 20px; }
-#page > footer article { padding: 0 20px; }
+    #listen article:last-of-type { 
+        flex: 4; 
+    }
+
+    #listen blockquote { 
+        font-size: 48px; 
+        padding: 30px; 
+    }
+
+    /* Footer styles */
+    #page > footer nav {
+        flex: 2 
+    }
+
+    #page > footer nav ul {
+        justify-content: flex-start; 
+    }
+
+    #page > footer nav ul li {
+        margin-right: 20px; 
+    }
+
+    #page > footer article {
+        padding: 0 20px; 
+    }
+
 /************ Maximum Size Styles *************/
 
 @media only screen and (min-width: 1500px) {
-	header { width: 1500px; left: 50%; transform: translateX(-50%); }
-}
+    header {
+        width: 1500px;
+        left: 50%;
+        transform: translateX(-50%); 
+    }
+    }
