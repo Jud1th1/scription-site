@@ -1,5 +1,6 @@
 // Smooth Scroll
-
+    
+const navLinks = document.
 
 // Flexslider
 
