@@ -23,8 +23,17 @@ $(".logo").on("click", function(e){
     $('html, body').stop(true, true).animate({scrollTop: 0}, 800, "swing");
 });
 
-// Flexslider
 
+// Flexslider
+   /*  $('.flexslider').flexslider(); //plugin */
+
+     $('.flexslider').flexslider({
+        animation: "slide",
+        slideshowSpeed: 2000,
+        direction: "horizontal",
+        reverse: true,
+        pauseOnHover: true
+    }); 
 
 // Tabs
 

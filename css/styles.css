@@ -154,19 +154,39 @@ header nav ul li a{
     position: relative;
 }
 
-#slider > .flexslider > li > div {
-    background-size: cover;
+#slider .flexslider .slides > li > div {
+  height: 0;
+  padding-top: 46.7%;
+  position: relative;
+  background-size: cover;
+  background-position: center;
 }
 
 .slide1 {
-    background-image: url("images/slider/slider01-large.jpg");
+    background-image: url("../images/slider/slider01-large.jpg");
 }
+.slide2 {
+    background-image: url("../images/slider/slider02-large.jpg");
+}
+.slide3 {
+    background-image: url("../images/slider/slider03-large.jpg");
+}
+.slide4 {
+    background-image: url("../images/slider/slider04-large.jpg");
+}
+.slide5 {
+    background-image: url("../images/slider/slider05-large.jpg");
+}
+.slide6 {
+    background-image: url("../images/slider/slider06-large.jpg");
+}
+
 
 #slider .cta {
     position: absolute;
     bottom: 0; 
     right: 0; 
-    background: rbga(6, 25, 35, 0.5);
+    background: rgba(6, 25, 35, 0.5);
     padding: 10px;
     color: #fff;
     width: 100%;
