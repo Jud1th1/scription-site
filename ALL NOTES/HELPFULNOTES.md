@@ -68,3 +68,26 @@ $(".logo").on("click", function(e){
 
 - Easing:
   - "swing" is built-in; "easeInCirc"/"easeOutCirc" require the easing plugin (already included).
+
+## ![](image-2.png) Challenge 2 - Flexslider Notes
+
+- Upload flexslider files to workspace
+  - jquery.flexslider-min.js
+  - jquery.flexslider.js
+  - flexslider.css
+- Add the link to the Flexslider CSS file to the index.html file
+  - `Remember load flexslider css BEFORE your stylesheet.`
+- Add the link to the flexslider JS script to the bottom of the index.html file
+- Adjust styling on the CSS file
+- Add the appropriate script to the script.js file to initialize the slider
+
+```
+ $('.flexslider').flexslider({
+        animation: "slide",
+        slideshowSpeed: 2000,
+        direction: "horizontal",
+        reverse: true,
+        pauseOnHover: true
+    });
+
+```

@@ -2,15 +2,15 @@
 
 ## Challenge 1 - Smooth Scroll:
 
-- When the user clicks the links in the navigatin bar it should scroll to the correct point on the page
+- When the user clicks the links in the navigation bar it should scroll to the correct point on the page
 - When the user clicks on the logo it should scroll to the very top of the page
 
 `Hints:`
 
 - See if you can modify the jQuery smooth scroll script from the first lesson in this module to make this work.
 - You might find it easiest to use two click handlers. One that targets the links in the navigation and one that targets the logo.
-- Also to make the animation feel snappy, I set it at 600 miliseconds and I used easInCirc easing. The easing plugin is already included on the page.
-- Be sure to put the entire script inside an IIFE (Immediately Invoked Function Expression), so that no varaibles end up in the global scope
+- Also to make the animation feel snappy, I set it at 600 milliseconds and I used easInCirc easing. The easing plugin is already included on the page.
+- Be sure to put the entire script inside an IIFE (Immediately Invoked Function Expression), so that no variables end up in the global scope
 
 ## Challenge 2 - Flexslider
 
@@ -33,7 +33,7 @@
 ## Challenge 4 - Content Rotator
 
 - Add the content rotator for the client quotes for this challenge. You will need to add more markup for the additional quotes, which are provided in snippets
-- Modify the script so that it is rotating the blockquptes instead of the paragraphs
+- Modify the script so that it is rotating the block quotes instead of the paragraphs
 - Add these two rules to the stylesheet in the listen section
 
 ```

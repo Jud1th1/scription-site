@@ -341,6 +341,12 @@ header nav ul li a{
 	background: var(--tea-green-light);
 }
 
+
+#pricing #tabs > ul > li > a.active {
+  background: #b34d66;
+  color: #fff;
+}
+
 #pricing #tabs div ul {
 	margin-left: 1em;
 	margin-bottom: 1em;
