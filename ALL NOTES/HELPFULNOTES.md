@@ -153,4 +153,45 @@ $(function () {
 - **Render** Hide all panels -> show target panel -> mark link active
 - **Click** Prevent jump -> run -> `showTab` with clicked link
 
-## ![](image-2.png)
+## ![](image-2.png) Challenge 4: Content Rotator Notes
+
+```js
+// Content Rotator
+
+  let counter = 1;
+
+  function contentRotator(){
+    //Get the first blockquote and fade it in
+    $(`#rotator blockquote:nth-child(${counter})`).fadeIn(2000, function(){
+      //add callback function
+      if($(this).is("#rotator blockquote:last-child")){
+        //wait a few seconds
+				//fade the paragraph out
+				//set the counter back to 1
+				//run contentRotator again
+        setTimeout(function(){
+          $(`#rotator blockquote:nth-child(${counter})`).fadeOut(2000, function(){
+            counter = 1;
+            contentRotator();
+          });
+        }, 4000);
+      }
+      else{
+        //wait a few seconds
+				//fade the paragraph out
+				//increment the counter
+				//run contentRotator again
+        setTimeout(function(){
+          $(`#rotator blockquote:nth-child(${counter})`).fadeOut(2000, function(){
+            counter++;
+            contentRotator();
+          });
+        }, 4000);
+      }
+
+    });
+  }
+
+  contentRotator();
+});
+```

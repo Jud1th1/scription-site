@@ -93,6 +93,37 @@ $(function(){
 });
 
 
+  // Content Rotator
+
+  let counter = 1;
+
+  function contentRotator(){
+    $(`#rotator blockquote:nth-child(${counter})`).fadeIn(2000, function(){
+      if($(this).is("#rotator blockquote:last-child")){
+        setTimeout(function(){
+          $(`#rotator blockquote:nth-child(${counter})`).fadeOut(2000, function(){
+            counter = 1;
+            contentRotator();
+          });
+        }, 4000);
+      }
+      else{ 
+        setTimeout(function(){
+          $(`#rotator blockquote:nth-child(${counter})`).fadeOut(2000, function(){
+            counter++;
+            contentRotator();
+          });
+        }, 4000);
+      }
+        
+    });
+  }
+
+  contentRotator();
+
+
+  // Features Rotator 
+
 });
 
 
@@ -115,10 +146,10 @@ $(function(){
 
 
 
-// Content Rotator
 
 
-// Features Rotator 
+
+
 
 
 
