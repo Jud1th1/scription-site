@@ -81,13 +81,76 @@ $(".logo").on("click", function(e){
 - Adjust styling on the CSS file
 - Add the appropriate script to the script.js file to initialize the slider
 
+```js
+$(".flexslider").flexslider({
+  animation: "slide",
+  slideshowSpeed: 2000,
+  direction: "horizontal",
+  reverse: true,
+  pauseOnHover: true,
+});
 ```
- $('.flexslider').flexslider({
-        animation: "slide",
-        slideshowSpeed: 2000,
-        direction: "horizontal",
-        reverse: true,
-        pauseOnHover: true
-    });
 
+## ![](image-2.png) Challenge 3 - Tabs Notes
+
+`Show one content panel at a time`
+
+### What happens on tab click 🖱️:
+
+- Mark that tab as active
+- Hide all other panels
+- Show the matching panel (to what was clicked)
+
+```js
+$(function () {
+  const $tabs = $("#tabs"); // 2) Cache the root tabs container
+  const $links = $tabs.find("ul li a"); // 3) All tab links inside it
+  const $panels = $tabs.children("div"); // 4) Panels = direct child <div>s of #tabs
+
+  // Helper: show the panel for a given link
+  function showTab($link) {
+    // e.g. href="#tab1"
+    const target = $link[0].hash || $link.attr("href");
+    //*if (!target) return;
+    // Guard rails: if there's no matching panel, bail.
+    if (!target || !$panels.filter(target).length) return;
+
+    // A) Visual state on tabs
+    $links.removeClass("active"); // 1) Remove active class from all tabs
+    $link.addClass("active"); // 2) Add active to clicked tab
+
+    // B) Panel visibility — hide all, then show the one that matches the hash
+    $panels.hide("hidden", true).filter(target).show();
+  }
+
+  // ----- Initial State -----
+  // If URL already has a hash AND that hash matches a panel, start there.
+  // Else, default to the first tab link.
+  const hasHash =
+    window.location.hash && $panels.filter(window.location.hash).length;
+  const $startTab = hasHash
+    ? $links.filter(`[href="${window.location.hash}"]`).first()
+    : $links.first();
+
+  // Hide everything before first render; then show starting tab/panel.
+  $panels.hide();
+  showTab($startTab);
+
+  // --- Clicks (delegated) ---
+  // Attach ONE click handler on #tabs. It will work for existing & future links.
+  $tabs.on("click", "ul li a", function (e) {
+    e.preventDefault(); // Stop browser's default jump
+    showTab($(this)); // Update UI to the clicked tab
+    // Optional: keep URL hash in sync:
+    // history.pushState(null, "", this.hash);
+  });
+});
 ```
+
+### Flow:
+
+- **Load** Decide start tab (hash match? else first)
+- **Render** Hide all panels -> show target panel -> mark link active
+- **Click** Prevent jump -> run -> `showTab` with clicked link
+
+## ![](image-2.png)

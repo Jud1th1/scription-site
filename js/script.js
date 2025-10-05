@@ -39,51 +39,58 @@ $(".logo").on("click", function(e){
 // Tabs
 
 $(function(){
-    
-    const $tabs   = $("#tabs");
-    const $links  = $tabs.find("ul li a");
-    const $panels = $tabs.children("div");
+  const $tabs   = $("#tabs");
+  const $links  = $tabs.find("ul li a");
+  const $panels = $tabs.children("div");
 
+  // --- ARIA setup ---
+  $tabs.attr("role", "tablist");
 
-    // Helper: show the panel for a given link
-    function showTab($link) {
-    // The anchor’s href gives us "#tab1" / "#tab2" / "#tab3"
+  $links.each(function (i) {
+    const $a = $(this);
+    const hash = $a[0].hash || $a.attr("href") || "";
+    const $panel = hash ? $panels.filter(hash) : $();
+
+    if ($panel.length) {
+      const pid = $panel.attr("id") || hash.replace("#", "");
+      $panel.attr("id", pid);
+      $a.attr({ role: "tab", id: `tablink-${i}`, "aria-controls": pid });
+    } else {
+      $a.attr({ role: "tab", id: `tablink-${i}` });
+    }
+  });
+
+  $panels.each(function (i) {
+    $(this).attr({ role: "tabpanel", "aria-labelledby": `tablink-${i}` });
+  });
+
+  function showTab($link) {
     const target = $link[0].hash || $link.attr("href");
-    /*if (!target) return;                         // nothing to show
-    if (!$panels.filter(target).length) return;  // guard: id not found */
     if (!target || !$panels.filter(target).length) return;
 
+    $links.removeClass("active").attr({ "aria-selected":"false", tabindex:"-1" });
+    $link.addClass("active").attr({ "aria-selected":"true", tabindex:"0" }).focus();
 
-    // 1) Remove active class from all tabs
-    $links.removeClass("active");
+    // fixed line ↓
+    $panels.hide().attr("hidden", true)
+           .filter(target).show().attr("hidden", false);
+  }
 
-    // 2) Add active to clicked tab
-    $link.addClass("active");
+  // ----- Initial State-------
+  const hasHash   = window.location.hash && $panels.filter(window.location.hash).length;
+  const $startTab = hasHash 
+      ? $links.filter(`[href="${window.location.hash}"]`).first()
+      : $links.first();
 
-    // 3) Get content to show and hide current visible content 
-    $panels.hide().filter(target).show();
-    }
-    
-    // ----- Initial State-------
-    // If the URL already has a hash that matches a panel, use that.
-    // Otherwise, default to the first tab.
+  $links.attr({ "aria-selected": "false", tabindex: "-1" });
+  $panels.hide().attr("hidden", true);
+  showTab($startTab);
 
-    const hasHash   = window.location.hash && $panels.filter(window.location.hash).length;
-    const $startTab = hasHash ? $links.filter(`[href="${window.location.hash}"]`).first()
-                            : $links.first();
-    
-    // Hide all panels, show the start one; set the active link
-    $panels.hide();
-    showTab($startTab);
-
-    // --- Clicks (delegated) ---
-    // We attach one handler to #tabs; it will catch clicks on any future links too.
-    $tabs.on("click", "ul li a", function (e) {
-        e.preventDefault();
-        showTab($(this));
-        // Optional: keep the URL hash in sync so Back/Forward work
-        // history.pushState(null, "", this.hash);
-    });
+  $tabs.on("click", "ul li a", function (e) {
+    e.preventDefault();
+    showTab($(this));
+  });
+});
 
 
 });
@@ -115,4 +122,3 @@ $(function(){
 
 
 
-});

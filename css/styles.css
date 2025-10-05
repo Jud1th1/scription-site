@@ -102,7 +102,7 @@ header{
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 0;
+    z-index: -100;
     background-color: rgba(0,0,0,0.75);
 }
 
@@ -326,25 +326,28 @@ header nav ul li a{
 #pricing #tabs > div {
     display: none;
     padding: 15px;
-    background-color: var(--tea-green);
+    background-color: var(--tea-green); 
     color: var(--rich-black);
 	border-top-right-radius: 10px;
 	min-height: 500px;
 }
 
-#pricing #tabs > div:first-of-type {
+/* #pricing #tabs > div:first-of-type {
 	display: block;
-	background: var(--tea-green-light);
-}
+	background: var(--tea-green-light); 
+} */
 
-#pricing #tabs > ul > li:first-of-type a {
-	background: var(--tea-green-light);
-}
+/* #pricing #tabs > ul > li:first-of-type a {
+    background: var(--tea-green-light); 
+} */
 
+#pricing #tab1:active {
+    background-color: blue;
+}
 
 #pricing #tabs > ul > li > a.active {
-  background: #b34d66;
-  color: #fff;
+    background: var(--tea-green-light);
+    color: #000;
 }
 
 #pricing #tabs div ul {
@@ -543,6 +546,14 @@ footer article a {
         flex: 5;
     }
 
+    #rotator{
+        min-height: 350px;
+    }
+
+    #rotator blockquote {
+        display: none;
+    }
+
     /* our team styles */
     #ourteam article{ 
         display: flex; 
@@ -684,6 +695,10 @@ footer article a {
 
     #listen blockquote {
         font-size: 36px; 
+    }
+
+    #rotator{
+        min-height: 550px;
     }
 
     /* Our Team styles */
