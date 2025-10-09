@@ -31,7 +31,7 @@ $(".logo").on("click", function(e){
         animation: "slide",
         slideshowSpeed: 2000,
         direction: "horizontal",
-        reverse: true,
+        reverse: false,
         pauseOnHover: true
     }); 
 
@@ -95,9 +95,12 @@ $(function(){
 
   // Content Rotator
 
-  let counter = 1;
+  
 
   function contentRotator(){
+
+   let counter = 1;
+
     $(`#rotator blockquote:nth-child(${counter})`).fadeIn(2000, function(){
       if($(this).is("#rotator blockquote:last-child")){
         setTimeout(function(){
@@ -123,7 +126,18 @@ $(function(){
 
 
   // Features Rotator 
+  // Have features rotating vertically. 
+  // When a paragraph is at the top of the container, pause for 3 seconds
+  // Highlight active paragraph to the pink color 
 
+  //Hints:
+  //You can use either use setInterval method or setTimeout and recursion
+  //The clone method might also be helpful
+  
+  
+  
+  
+ 
 });
 
 

@@ -1,0 +1,57 @@
+function featureRotator(){
+ 
+    const $container = $('#feature-container');
+    const $featuresList   = $container.find('#features');
+    const $list = $featuresList.find('.eachfeature').first();
+
+    // duplicate the list once to create a seamless loop
+    const $clone = $list.clone(true);
+    $featuresList.append($clone);
+
+    const SPEED = 50; // pixels per second
+
+    // compute how tall one list is (including margins)
+    let listHeight = $list.outerHeight(true);
+
+    // keep state so we don’t start multiple loops
+    let running = false;
+
+    function loop(){
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      if (running) return;
+      running = true;
+
+      // where are we now?
+      const currentTop = parseFloat($featuresList.css('top')) || 0; // 0 or a negative value
+      const remaining  = listHeight + currentTop * -1; // distance left to hit -listHeight
+      const durationMs = (remaining / SPEED) * 1000;
+
+      $featuresList.animate(
+        { top: -listHeight },                 // move the featuresList up by one list
+        { duration: durationMs, easing: 'linear',
+          complete(){
+            // snap back to 0 and continue (endless loop)
+            $featuresList.css('top', 0);
+            running = false;
+            loop();
+          }
+        }
+      );
+    }
+
+
+    // start it
+    loop();
+
+    // pause on hover, resume on leave
+    $container.on('mouseenter', function(){
+      $featuresList.stop(true, false); // pause at current position
+      running = false;
+    }).on('mouseleave', function(){
+      // resume from where we stopped
+      loop();
+    });
+
+  }
+
+  featureRotator();
