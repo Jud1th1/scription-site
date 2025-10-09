@@ -296,6 +296,13 @@ header nav ul li a{
 	color: var(--jasmine);
 }
 
+/* Pink highlight while parked at the top */
+#download .eachfeature li.active {
+  color: var(--firey-rose);
+  font-weight: 600;
+}
+
+
 /************ Pricing Styles *************/
 
 #pricing {

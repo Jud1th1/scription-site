@@ -1,3 +1,5 @@
+// DISREGARD
+
 function featureRotator(){
  
     const $container = $('#feature-container');

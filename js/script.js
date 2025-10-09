@@ -135,9 +135,73 @@ $(function(){
   //The clone method might also be helpful
   
   
+  function featureRotator(){
+
+    const $container = $('#feature-container');
+    const $track     = $("#features"); 
+    const $featuresList = $('#features');
+    const $list      = $track.find(".eachfeature");
+
+    const HOLD = 3000;                              // ms to pause on each item
+    const SLIDE = 300;                              // ms to slide one item up
+    let paused = false, busy = false, timer = null;
+
+    // init: only the first item is active
+    const setActiveFirst = () => {
+      $list.children("li").removeClass("active").first().addClass("active");
+    };
+    setActiveFirst();
+    $track.css({ top: 0 }); // normalize
+
+    function tick() {
+      if (paused || busy) return;
+      busy = true;
+
+      const $first = $list.children("li").first();
+      const h = $first.outerHeight(true);          // height of one item (with margins)
+
+      // hold while the first item is parked at the top
+      timer = setTimeout(() => {
+        // slide the track up by exactly one item
+        $track.animate({ top: -h }, SLIDE, "linear", () => {
+          // move the first item to the end and reset position
+          $first.appendTo($list);
+          $track.css("top", 0);
+          setActiveFirst();                        // highlight the new first
+          busy = false;
+          tick();                                  // next item
+        });
+      }, HOLD);
+    }
+
+    // pause/resume on hover
+    $container
+      .on("mouseenter", () => {
+        paused = true;
+        clearTimeout(timer);
+        $track.stop(true, false);                  // pause the slide where it is
+      })
+      .on("mouseleave", () => {
+        // normalize if we paused mid-slide: snap to "after slide" state
+        const top = parseFloat($track.css("top")) || 0;
+        if (top !== 0) {
+          const $first = $list.children("li").first();
+          const h = $first.outerHeight(true);
+          $track.css("top", -h);                   // finish the movement
+          $first.appendTo($list);
+          $track.css("top", 0);
+          setActiveFirst();
+        }
+        paused = false;
+        busy = false;
+        tick();
+      });
+
+    tick();
+  }
+
+  featureRotator();
   
-  
- 
 });
 
 

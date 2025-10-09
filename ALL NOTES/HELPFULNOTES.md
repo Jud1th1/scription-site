@@ -195,3 +195,59 @@ $(function () {
   contentRotator();
 });
 ```
+
+## ![](image-2.png) Challenge 5 – Feature Rotator Notes
+
+Have features rotate vertically inside the container.
+
+### What happens 🌀
+
+  - Select the container (#feature-container) and the list of features (#features).
+  - Hide/show one feature at a time in a vertical scroll animation.
+  - After a feature reaches the top, pause for ≈ 3 seconds.
+  - Highlight the “active” paragraph with the pink color.
+  - Loop back to the start when the last feature is reached.
+
+Steps to Build It 🧠
+
+  1. Cache selectors for performance:
+
+``` js
+const $container = $('#feature-container');
+const $features  = $('#features p');   // or each <p> feature line
+let index = 0;
+```
+
+  2. Write a function that fades each feature in/out sequentially.
+  3. Use recursion with setTimeout() so the rotation continues automatically.
+  4. Add/remove the .active class to highlight the current line.
+  - Optional: pause on hover using .mouseenter() / .mouseleave().
+
+  Final JS:
+  ``` js
+  function featureRotator() {
+  const $container = $('#feature-container');
+  const $features  = $('#features p');
+  let index = 0;
+  const delay = 3000;     // pause between rotations
+  const speed = 600;      // fade speed
+
+  function rotate() {
+    // remove highlights & hide all
+    $features.removeClass('active').fadeOut(speed);
+    // fade in next feature
+    $features.eq(index).fadeIn(speed).addClass('active');
+    // update index (loop back to start)
+    index = (index + 1) % $features.length;
+    setTimeout(rotate, delay);
+  }
+
+  // optional pause on hover
+  $container.on('mouseenter', () => clearTimeout(window.rotatorTimer))
+            .on('mouseleave', () => rotate());
+
+  rotate();
+}
+
+featureRotator();
+```
